@@ -24,6 +24,17 @@ public class CandyRecommender {
     
     // A map from ingredients to candies containing the ingredient.
     private static IngredientMap ingredientMap = new IngredientMap();
+    
+    
+    static void initialize() {
+        candies = new ArrayList<>();
+        likes = new ArrayList<>(); 
+        dislikes = new ArrayList <>();
+        ingredientMap = new IngredientMap();
+        Set<Candy> possible = new HashSet<>();
+       
+       
+    }
 
     /**
      * Read the candy information from the file called Candy.txt.  The file 
@@ -31,8 +42,8 @@ public class CandyRecommender {
      * Initializes the candies list and the ingredientMap.
      * @throws FileNotFoundException if the Candy.txt file cannot be found.
      */
-    private static void readCandyFile() throws FileNotFoundException {
-        try (Scanner in = new Scanner (new File ("Candy.txt"))) {
+    static void readCandyFile(String filename) throws FileNotFoundException {
+        try (Scanner in = new Scanner (new File (filename))) {
             // Read in each candy
             while (in.hasNextLine()) {
                 String line = in.nextLine();
@@ -56,7 +67,7 @@ public class CandyRecommender {
      * For each ingredient found in any candy, ask the user if they like, 
      * dislike, or are neutral about that ingredient.
      */
-    private static void getUserPreferences() {
+    static void getUserPreferences() {
         try (Scanner in = new Scanner (System.in)) {
         
             // Ask the user about each ingredient
@@ -90,7 +101,7 @@ public class CandyRecommender {
      * A higher score is better.
      * @return the candies that this user would probably like
      */
-    private static Set<Candy> findLikedCandies() {
+    static Set<Candy> findLikedCandies() {
         Set<Candy> possible = new HashSet<>();
         for (String ingredient : likes) {
             possible.addAll (ingredientMap.getCandyWith(ingredient));
@@ -105,12 +116,51 @@ public class CandyRecommender {
      * Outputs the list of candies to the screen
      * @param possible the candies to output
      */
-    private static void recommendCandies(Set<Candy> possible) {
+    static void recommendCandies(Set<Candy> possible) {
+        if (possible.size() == 0) {
+            System.out.println("Too picky! No candy recommendations for you.");            
+        }
+        
         for (Candy c: possible) {
             System.out.println(c.getName() + ": " + c.score(likes));
         }
     }
-
+    
+    //Added for testing 
+    static List<Candy> getCandies(){
+       return candies; 
+    }
+    
+    //Added for testing 
+    static List<String> getLikes(){
+        return likes; 
+    }
+    
+    //Added for testing 
+    static List<String> getDislikes(){
+        return dislikes; 
+    }
+    
+    //Added for testing 
+    static IngredientMap getIngredientMap() {
+        return ingredientMap;
+    }
+    
+    //Added for testing 
+    static void addToLike(String ingredient) {
+        likes.add(ingredient);
+    }
+    
+    //Added for testing 
+    static void addToDislikes(String ingredient) {
+        dislikes.add(ingredient);
+    }
+    
+    //Added for testing 
+    public static Set<Candy> getFindlikedCandies(){
+        return findLikedCandies();
+   }
+    
     /**
      * Reads the candies from a file, asks the user for their likes and 
      * dislikes, and makes a recommendation
@@ -118,7 +168,7 @@ public class CandyRecommender {
      */
     public static void main(String[] args) {
         try {
-            readCandyFile();
+            readCandyFile("Candy.txt");
             getUserPreferences();
             Set<Candy> likedCandies = findLikedCandies();
             recommendCandies(likedCandies);
@@ -128,3 +178,9 @@ public class CandyRecommender {
     }
 
 }
+
+
+
+
+
+

@@ -53,3 +53,4 @@ public class Candy {
         return 10 * match / ingredients.size();
     }
 }
+
