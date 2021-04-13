@@ -50,22 +50,7 @@ public class IngredientMap {
      * are no candies with this ingredient.
      */
     public Collection<Candy> getCandyWith(String ingredient) {
-//      Collection<Candy> allCandies = ingredientMap.get(ingredient);
-//      List<String> allCandyName = new ArrayList<>();
-//        
-
-////        for(Candy c: allCandyName) {
-////            allCandyName.add(c.getName());
-////        }
-////        
-////        return allCandyName;
-//        
-//        //get ingredients and then get candyName and add that to list 
-//        
-////        ingredientMap.get(ingredient);
-//        
-       
-
+        
         return ingredientMap.get(ingredient);
     }
 }
