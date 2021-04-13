@@ -12,7 +12,7 @@ public class Candy {
     private String name;
     
     // The list of ingredients in the candy
-    private List<String> ingredients = new ArrayList<>();
+    private static List<String> ingredients = new ArrayList<>();
 
     /**
      * Construct a new Candy object
@@ -28,10 +28,28 @@ public class Candy {
     }
     
     /**
+     * added for testing
+     * clear out arrays for testing  
+     */
+    static void initialize() {
+        ingredients = new ArrayList<>();
+        String [] ingredients = new String[0];
+        List<String> likes = new ArrayList<>();
+    }
+    
+    /**
      * @return the candy's name
      */
     public String getName() {
         return name;
+    }
+    
+    /**
+     * added for testing
+     * @return list of ingredients
+     */
+    public  List<String> getIngredients(){
+        return ingredients; 
     }
     
     /**
@@ -41,7 +59,7 @@ public class Candy {
      * @return a number between 0 and 10.  0 means none are in the candy.  10
      * means all the ingredients in the candy are also in the likes list.
      */
-    public int score (List<String> likes) {
+    public static int score (List<String> likes) {
         int match = 0;
         for (String ingredient : likes) {
             if (ingredients.contains(ingredient)) {
@@ -53,4 +71,7 @@ public class Candy {
         return 10 * match / ingredients.size();
     }
 }
+
+
+
 

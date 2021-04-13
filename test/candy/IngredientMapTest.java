@@ -51,9 +51,11 @@ class IngredientMapTest {
         iMap.add("chocolate", snickers);
         iMap.add("chocolate", reeses);
         Collection<Candy> chocCandies = iMap.getCandyWith("chocolate");
-        assertEquals(2, chocCandies.size());
-        assertTrue(chocCandies.contains(snickers));
         assertTrue(chocCandies.contains(reeses));
+        assertTrue(chocCandies.contains(snickers));
+        assertEquals(2, chocCandies.size());
+        
+        
     }
     
     @Test
@@ -78,7 +80,6 @@ class IngredientMapTest {
         assertTrue(ingred.contains("caramel"));
         assertTrue(ingred.contains("peanut butter"));
     }
-
 }
 
 

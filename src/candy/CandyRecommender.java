@@ -1,3 +1,9 @@
+/**
+ * @author Pod B1
+ * Asmaa Chaudhry 
+ * CandyReccomender JUNIT tests
+ */
+
 package candy;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -26,16 +32,18 @@ public class CandyRecommender {
     private static IngredientMap ingredientMap = new IngredientMap();
     
     
+    /**
+     * added for testing
+     * clear out arrays for testing  
+     */
     static void initialize() {
         candies = new ArrayList<>();
         likes = new ArrayList<>(); 
         dislikes = new ArrayList <>();
         ingredientMap = new IngredientMap();
         Set<Candy> possible = new HashSet<>();
-       
-       
     }
-
+    
     /**
      * Read the candy information from the file called Candy.txt.  The file 
      * should be formatted like this:  candy name:ingredient 1, ingredient 2
@@ -62,7 +70,7 @@ public class CandyRecommender {
         System.out.println("Read " + candies.size() + 
                            " candies from the file.");
     }
-
+   
     /**
      * For each ingredient found in any candy, ask the user if they like, 
      * dislike, or are neutral about that ingredient.
@@ -92,7 +100,7 @@ public class CandyRecommender {
             }
         }
     }
-
+  
     /**
      * Recommend candies that you think the user will like based upon their
      * likes and dislikes and what the candies contain.  It will not suggest
@@ -111,7 +119,7 @@ public class CandyRecommender {
         }
         return possible;
     }
-
+   
     /**
      * Outputs the list of candies to the screen
      * @param possible the candies to output
@@ -125,41 +133,62 @@ public class CandyRecommender {
             System.out.println(c.getName() + ": " + c.score(likes));
         }
     }
-    
-    //Added for testing 
+      
+    /**
+     * added for testing
+     * @return list of candies
+     */ 
     static List<Candy> getCandies(){
        return candies; 
     }
-    
-    //Added for testing 
+       
+    /**
+     * added for testing
+     * @return list of likes
+     */
     static List<String> getLikes(){
         return likes; 
     }
     
-    //Added for testing 
+    /**
+     * added for testing
+     * @return list of dislikes
+     */
     static List<String> getDislikes(){
         return dislikes; 
     }
     
-    //Added for testing 
+    /**
+     * added for testing
+     * @return IngredientMap
+     */ 
     static IngredientMap getIngredientMap() {
         return ingredientMap;
     }
     
-    //Added for testing 
+    /**
+     * added for testing
+     * @param String Ingredients added to likes list
+     */
     static void addToLike(String ingredient) {
         likes.add(ingredient);
     }
     
-    //Added for testing 
+    /**
+     * added for testing
+     * @param String Ingredients added to dislikes list
+     */
     static void addToDislikes(String ingredient) {
         dislikes.add(ingredient);
     }
     
-    //Added for testing 
+    /**
+     * added for testing
+     * @return findLikedCandies() method
+     */ 
     public static Set<Candy> getFindlikedCandies(){
         return findLikedCandies();
-   }
+    }
     
     /**
      * Reads the candies from a file, asks the user for their likes and 
@@ -178,6 +207,9 @@ public class CandyRecommender {
     }
 
 }
+
+
+
 
 
 

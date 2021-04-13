@@ -1,4 +1,6 @@
 package candy;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -19,10 +21,20 @@ public class IngredientMap {
      * @param candy the candy to add to the list
      */
     public void add(String ingredient, Candy candy) {
+
         List<Candy> newList = new ArrayList<>();
         newList.add(candy);
-        ingredientMap.put(ingredient, newList);
-    }
+        
+        //create new candy array and add previous candies to prevent them from being lost
+        List<Candy> allCandies = new ArrayList<>();
+        allCandies = ingredientMap.get(ingredient);
+        
+        if (allCandies == null) {
+            allCandies = new ArrayList<Candy>();
+            ingredientMap.put(ingredient, newList);
+        }        
+        allCandies.add(candy);
+    } 
 
     /**
      * @return all the ingredients that appear in any candy.
@@ -38,7 +50,24 @@ public class IngredientMap {
      * are no candies with this ingredient.
      */
     public Collection<Candy> getCandyWith(String ingredient) {
+//      Collection<Candy> allCandies = ingredientMap.get(ingredient);
+//      List<String> allCandyName = new ArrayList<>();
+//        
+
+////        for(Candy c: allCandyName) {
+////            allCandyName.add(c.getName());
+////        }
+////        
+////        return allCandyName;
+//        
+//        //get ingredients and then get candyName and add that to list 
+//        
+////        ingredientMap.get(ingredient);
+//        
+       
+
         return ingredientMap.get(ingredient);
     }
 }
+
 
